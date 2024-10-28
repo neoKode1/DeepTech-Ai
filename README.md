@@ -1,41 +1,38 @@
-# 🚀 DeepTech AI Website
+# DeepTech AI
 
-A modern, responsive website showcasing DeepTech AI's innovative AI technologies and solutions. The website features an immersive design with dynamic media gallery, project showcases, and future innovations section.
+![DeepTech AI Banner](media/deeptech.png)
 
-![DeepTech AI Banner](media/deeptech_banner.jpg)
+## Overview
 
-## 📋 Features
+DeepTech AI is a pioneering technology company focused on developing cutting-edge AI solutions. Our platform combines advanced artificial intelligence with practical applications in streaming, content creation, and digital interaction.
 
-### 🎨 Dynamic Media Showcase
-- Auto-rotating gallery featuring both video and image content
-- Smooth transitions and animations
-- Responsive design for all screen sizes
-- Custom video player integration
+## Core Products
 
-### 💡 Project Sections
-- **Streamy**: AI-powered live streaming platform
-- **Medusa.io**: Creative AI suite for image and video generation
-- **Narrative AI**: Web application for AI-driven content creation
+### 🎮 Streamy
+- AI-powered live streaming platform
+- Advanced avatar technology
+- Real-time interactions
+- Ultra-low latency streaming
+- AI-powered chat moderation
 
-### 🌟 Key Components
-- Modern, dark-themed design
-- Glass-morphism effects
-- Gradient accents
-- Interactive elements
-- Social media integration
-- Future innovations roadmap
+### 🎨 Medusa.io
+- Creative AI suite
+- Text-to-Image Generation
+- Image-to-Video Transformation
+- Smart Prompt Generation
 
-## 🛠️ Tech Stack
+### 🎭 Narrative AI
+- Web-based AI application
+- Image generation and animation
+- Voice integration
+- Interactive storytelling
 
-- HTML5
-- CSS3 with modern features
-  - Flexbox
-  - Grid
-  - Glass-morphism effects
-  - Custom animations
-- Tailwind CSS for styling
-- Vanilla JavaScript for interactions
-- Responsive design principles
+## Connect With Us
 
-## 📁 Project Structure
+- [@io2Medusa](https://x.com/io2Medusa) - Twitter
+- [@JusChadneo](https://x.com/JusChadneo) - Twitter
+- [neoKode1](https://github.com/neoKode1) - GitHub
 
+## License
+
+© 2024 DeepTech AI. All rights reserved.
