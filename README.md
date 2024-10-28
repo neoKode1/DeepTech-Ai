@@ -8,20 +8,20 @@ DeepTech AI is a pioneering technology company focused on developing cutting-edg
 
 ## Core Products
 
-### 🎮 Streamy
+###  Streamy
 - AI-powered live streaming platform
 - Advanced avatar technology
 - Real-time interactions
 - Ultra-low latency streaming
 - AI-powered chat moderation
 
-### 🎨 Medusa.io
+###  Medusa.io
 - Creative AI suite
 - Text-to-Image Generation
 - Image-to-Video Transformation
 - Smart Prompt Generation
 
-### 🎭 Narrative AI
+###  Narrative AI
 - Web-based AI application
 - Image generation and animation
 - Voice integration
