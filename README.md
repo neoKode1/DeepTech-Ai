@@ -1,6 +1,6 @@
 # DeepTech AI
 
-![DeepTech AI Banner](media/deeptech.png)
+![DeepTech AI Banner](media/deepteckimg.png)
 
 ## Overview
 
