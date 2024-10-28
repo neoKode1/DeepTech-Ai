@@ -2,7 +2,7 @@
 
 A modern, responsive website showcasing DeepTech AI's innovative AI technologies and solutions. The website features an immersive design with dynamic media gallery, project showcases, and future innovations section.
 
-![DeepTech AI Banner](media/IMG_5131.JPG)
+![DeepTech AI Banner](media/deeptech_banner.jpg)
 
 ## 📋 Features
 
