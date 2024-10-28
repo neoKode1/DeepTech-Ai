@@ -101,59 +101,60 @@
         }
 
         .main-title {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 300;
-            /* Lighter font weight */
             color: white;
-            letter-spacing: 0.5em;
             text-align: center;
-            margin-bottom: 0.5em;
+            display: flex;
+            justify-content: center;
+            align-items: baseline; /* Align text baselines */
         }
 
-        .title-container {
-            width: 100%;
-            /* Add or modify other properties as needed */
-        }
-
-        .card-gradient {
-            background: linear-gradient(145deg, rgba(18, 18, 18, 0.9), rgba(28, 28, 28, 0.5));
-            backdrop-filter: blur(10px);
-        }
-
-        .gallery-container {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            z-index: 1;
+        .deeptech {
+            letter-spacing: 0.4em;
+            font-size: 2.5rem;
+            margin-right: 0.8em; /* Specific spacing between DEEPTECH and AI */
         }
 
         .ai-text {
-            font-size: 6rem;
-            font-weight: 300;
-            letter-spacing: 0.3em;
-            display: block;
+            font-size: 5rem;
+            letter-spacing: 0.15em; /* Tighter spacing between A and I */
+        }
+
+        .a-letter {
+            margin-right: 0.1em;
         }
 
         @media (max-width: 768px) {
             .main-title {
-                font-size: 2.5rem;
-                letter-spacing: 0.3em;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .deeptech {
+                font-size: 1.8rem;
+                margin-right: 0;
             }
 
             .ai-text {
                 font-size: 3.5rem;
-                letter-spacing: 0.2em;
             }
         }
 
         .title-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5); /* Slightly darker overlay */
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .main-title {
+            position: relative;
+            z-index: 11;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .bottom-gallery-container {
@@ -188,15 +189,37 @@
             height: 100%;
             object-fit: cover;
         }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #f8faf9, #00ccff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Add or update these styles */
+        .min-h-screen {
+            min-height: calc(100vh - 5rem); /* Increased padding space */
+            padding-top: 5rem; /* Added top padding */
+        }
+
+        @media (max-width: 768px) {
+            .min-h-screen {
+                min-height: calc(100vh - 3rem);
+                padding-top: 3rem; /* Smaller padding for mobile */
+            }
+        }
     </style>
 </head>
 
 <body>
     <!-- Hero Section with Image Slider -->
-    <section class="min-h-screen relative overflow-hidden">
-        <div class="image-slider mx-auto max-w-6xl">
-            <!-- Image Items -->
-            <div class="slide"><img src="media/IMG_5249.JPG" alt=""></div>
+    <section class="min-h-screen relative overflow-hidden pt-20"> <!-- Changed mt-16 to pt-20 for more padding -->
+        <div class="absolute inset-0">
+            <img src="media/IMG_5249.JPG" alt="DeepTech AI Hero" class="w-full h-full object-cover">
         </div>
 
         <!-- Separate overlay for title -->
@@ -227,7 +250,7 @@
                     <li>Ultra-low latency streaming</li>
                     <li>AI-powered chat moderation</li>
                 </ul>
-                <a href="#" class="text-blue-400 hover:text-blue-300">Learn More →</a>
+                <a href="javascript:void(0)" onclick="showModal('streamy')" class="text-blue-400 hover:text-blue-300">Learn More →</a>
             </div>
 
             <!-- Medusa.io -->
@@ -240,7 +263,7 @@
                     <li>Image-to-Video Transformation</li>
                     <li>Smart Prompt Generation</li>
                 </ul>
-                <a href="#" class="text-blue-400 hover:text-blue-300">Learn More →</a>
+                <a href="javascript:void(0)" onclick="showModal('medusa')" class="text-blue-400 hover:text-blue-300">Learn More →</a>
             </div>
 
             <!-- Narrative AI -->
@@ -253,7 +276,7 @@
                     <li>Animation Creation</li>
                     <li>Voice Integration</li>
                 </ul>
-                <a href="#" class="text-blue-400 hover:text-blue-300">Learn More →</a>
+                <a href="javascript:void(0)" onclick="showModal('narrative')" class="text-blue-400 hover:text-blue-300">Learn More →</a>
             </div>
         </div>
     </section>
@@ -357,7 +380,92 @@
                 video.load();
             }
         });
+
+        const modalContent = {
+            streamy: {
+                title: "Streamy",
+                description: "AI-powered live streaming platform with advanced avatar technology and real-time interactions.",
+                features: [
+                    "Real-time avatar live streaming",
+                    "Real-time avatar customization",
+                    "Ultra-low latency streaming",
+                    "AI-powered chat moderation",
+                    "Advanced user interaction features",
+                    "Customizable streaming environments",
+                    "Live facial tracking and mapping",
+                    "Real-time expression mirroring",
+                    "Custom avatar creation tools"
+                ]
+            },
+            medusa: {
+                title: "Medusa.io",
+                description: "Creative suite combining multiple AI models for stunning image and video generation.",
+                features: [
+                    "Text-to-Image Generation",
+                    "Image-to-Video Transformation",
+                    "Smart Prompt Generation",
+                    "Multi-model integration",
+                    "Advanced editing tools"
+                ]
+            },
+            narrative: {
+                title: "Narrative AI",
+                description: "Web-based AI application for generating and animating images with voice integration.",
+                features: [
+                    "AI Image Generation",
+                    "Animation Creation",
+                    "Voice Integration",
+                    "Interactive storytelling",
+                    "Real-time rendering"
+                ]
+            }
+        };
+
+        function showModal(product) {
+            const modal = document.getElementById('modal');
+            const content = modalContent[product];
+            const modalContentDiv = document.getElementById('modalContent');
+            
+            modalContentDiv.innerHTML = `
+                <h3 class="modal-title">${content.title}</h3>
+                <p class="text-gray-300 mb-4">${content.description}</p>
+                <h4 class="text-white font-bold mb-2">Key Features:</h4>
+                <ul class="text-gray-300 space-y-2 mb-4">
+                    ${content.features.map(feature => `<li>• ${feature}</li>`).join('')}
+                </ul>
+            `;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Update the Learn More links
+        document.querySelectorAll('.card-gradient').forEach((card, index) => {
+            const link = card.querySelector('a');
+            link.href = 'javascript:void(0)';
+            link.onclick = () => showModal(['streamy', 'medusa', 'narrative'][index]);
+        });
     </script>
+
+    <!-- Add this right before the closing </body> tag -->
+
+    <!-- Modal Container -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-gray-900 p-8 rounded-xl max-w-2xl mx-4 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
 </body>
 
 </html>
