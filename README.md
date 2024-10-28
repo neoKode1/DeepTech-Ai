@@ -35,4 +35,4 @@ DeepTech AI is a pioneering technology company focused on developing cutting-edg
 
 ## License
 
-© 2024 DeepTech AI. All rights reserved.
+© 2024 DeepTechnologies llc. All rights reserved.
