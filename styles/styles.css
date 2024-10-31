@@ -1,0 +1,935 @@
+/* Base Styles */
+body {
+  background-color: #0a0a0a;
+  color: #e5e5e5;
+}
+
+/* Card and Gradient Styles */
+.card-gradient {
+  position: relative;
+  background: transparent;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.card-gradient:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.card-gradient::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card-gradient:hover::after {
+  opacity: 1;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #ffffff, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Modal Styles */
+#modal .bg-gray-900 {
+  background-color: #1a1d24;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+#modal .bg-gray-900:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+#modal button {
+  top: 10px;
+  right: 10px;
+}
+
+/* Gallery Styles */
+.gallery-container {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 2s ease-in-out;
+  transform: scale(1.05);
+}
+
+.gallery-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.8);
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+.gallery-item.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.gallery-item.prev {
+  opacity: 0;
+  transform: scale(1.1);
+  z-index: 1;
+  transition: all 2s ease-in-out;
+}
+
+/* Glow Effect */
+.gallery-item.active::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 204, 255, 0.1), rgba(0, 255, 136, 0.1));
+  z-index: 2;
+  opacity: 0;
+  animation: glowPulse 4s infinite;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Title Styles */
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  position: relative;
+  z-index: 11;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.deeptech {
+  letter-spacing: 0.4em;
+  font-size: 2.5rem;
+  margin-right: 0.8em;
+}
+
+.ai-text {
+  font-size: 5rem;
+  letter-spacing: 0.15em;
+}
+
+.a-letter {
+  margin-right: 0.1em;
+}
+
+/* Overlay Styles */
+.title-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 70%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Form Styles */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(75, 85, 99, 0.4);
+  color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-color: #00ccff;
+  background: rgba(31, 41, 55, 0.1);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #e5e5e5;
+}
+
+.submit-button {
+  background: linear-gradient(45deg, #00ff88, #00ccff);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.submit-button:hover {
+  opacity: 0.9;
+}
+
+/* Modal Title */
+.modal-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #f8faf9, #00ccff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .main-title {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .deeptech {
+      font-size: 1.8rem;
+      margin-right: 0;
+  }
+
+  .ai-text {
+      font-size: 3.5rem;
+  }
+
+  .min-h-screen {
+      min-height: calc(100vh - 3rem);
+      padding-top: 3rem;
+  }
+}
+
+/* New Section Styles */
+.about-section {
+  background: linear-gradient(to bottom, rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 1));
+}
+
+.team-card {
+  background: rgba(31, 41, 55, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #00ff88, #00ccff);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Video Styles */
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Layout */
+.min-h-screen {
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+/* Bottom Gallery */
+.bottom-gallery-container {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  margin: 2rem auto;
+  border-radius: 0.5rem;
+}
+
+.bottom-gallery-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.bottom-gallery-item.active {
+  opacity: 1;
+}
+
+.bottom-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* Add these new animation classes */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+.slide-up {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Add loading animation styles */
+.loading-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Add hover effects for cards */
+.card-gradient {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-gradient:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Update the contact section box style */
+.contact-box {
+    background: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-box:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.contact-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.contact-box:hover::after {
+    opacity: 1;
+}
+
+/* Keep the existing input field styles */
+.contact-box input,
+.contact-box textarea,
+.contact-box select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    color: #fff;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.contact-box input:hover,
+.contact-box textarea:hover,
+.contact-box select:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus,
+.contact-box select:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Beta Access Section Styles */
+.beta-box {
+    background: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.beta-box:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.feature-box {
+    background: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-box:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Add glow effect for beta access button */
+.beta-button {
+    background: linear-gradient(to right, #3b82f6, #14b8a6);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.beta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.beta-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.beta-button:hover::after {
+    opacity: 1;
+}
+
+/* Add radial gradient effect on hover for feature boxes */
+.feature-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feature-box:hover::after {
+    opacity: 1;
+}
+
+/* Add these styles for the technical excellence boxes */
+.tech-box {
+    background: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-box:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.tech-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tech-box:hover::after {
+    opacity: 1;
+}
+
+/* Update button styles */
+.beta-button,
+.submit-button,
+button[type="submit"],
+.card-gradient a {
+    background: transparent !important; /* Override any existing backgrounds */
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.beta-button:hover,
+.submit-button:hover,
+button[type="submit"]:hover,
+.card-gradient a:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Add glow effect for all buttons */
+.beta-button::after,
+.submit-button::after,
+button[type="submit"]::after,
+.card-gradient a::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.beta-button:hover::after,
+.submit-button:hover::after,
+button[type="submit"]:hover::after,
+.card-gradient a:hover::after {
+    opacity: 1;
+}
+
+/* Update Learn More links style */
+.card-gradient a {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.card-gradient:hover a {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Update modal close button */
+#modal button {
+    background: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+#modal button:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Vision Box Styles */
+.vision-box {
+    background: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.vision-box:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.vision-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vision-box:hover::after {
+    opacity: 1;
+}
+
+/* Update Modal Styles */
+#modal .bg-gray-900 {
+    background-color: #1a1d24;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+}
+
+#modal .bg-gray-900:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Update modal content styles to match the theme */
+.modal-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #f8faf9, #00ccff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+#modal ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+#modal ul li:last-child {
+    border-bottom: none;
+}
+
+/* Update Form Input Styles */
+.contact-box input,
+.contact-box textarea,
+.contact-box select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    color: #fff;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Add glow effect on hover */
+.contact-box input:hover,
+.contact-box textarea:hover,
+.contact-box select:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced glow effect on focus */
+.contact-box input:focus,
+.contact-box textarea:focus,
+.contact-box select:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Style for select dropdown */
+.contact-box select option {
+    background-color: #1a1d24;
+    color: #fff;
+}
+
+/* Add subtle animation for focus transition */
+.contact-box input,
+.contact-box textarea,
+.contact-box select {
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus,
+.contact-box select:focus {
+    transform: translateY(-2px);
+}
+
+/* Update the About section gradient */
+.bg-gradient-to-b.from-gray-900.to-transparent {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* Adjust hero section */
+.min-h-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0; /* Remove padding for hero */
+}
+
+/* Update title overlay gradient */
+.title-overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Adjust section spacing */
+section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Smooth gradient transition for dark sections */
+.bg-gradient-to-b.from-gray-900 {
+    background: linear-gradient(180deg,
+        rgba(17, 24, 39, 0.95) 0%,
+        rgba(17, 24, 39, 0.8) 50%,
+        rgba(17, 24, 39, 0) 100%
+    );
+}
+
+/* Smooth gradient transition for transparent sections */
+.bg-gradient-to-b.from-transparent {
+    background: linear-gradient(180deg,
+        rgba(17, 24, 39, 0) 0%,
+        rgba(17, 24, 39, 0.8) 50%,
+        rgba(17, 24, 39, 0.95) 100%
+    );
+}
+
+/* Hero section adjustments */
+.min-h-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0; /* Remove padding for hero */
+}
+
+/* Title overlay adjustment */
+.title-overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.7) 50%,
+        rgba(0, 0, 0, 0.9) 100%
+    );
+}
+
+/* Adjust spacing between sections */
+section + section {
+    margin-top: 0;
+}
+
+/* Update section gradients for seamless flow */
+
+/* Hero to About (dark to transparent) */
+.about-overlay {
+    background: linear-gradient(180deg, 
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* About to Projects (transparent to dark) */
+section.py-20.px-4:nth-of-type(3) {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+}
+
+/* Projects to Cinematic (dark to transparent) */
+section.py-20.px-4.bg-gradient-to-b.from-transparent.to-gray-900:nth-of-type(4) {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* Cinematic to Industry (transparent to dark) */
+section.py-20.px-4.bg-gradient-to-b.from-gray-900.to-transparent:nth-of-type(5) {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+}
+
+/* Industry to Technical (dark to transparent) */
+section.py-20.px-4.bg-gradient-to-b.from-gray-900.to-transparent:nth-of-type(6) {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* Technical to Beta (transparent to dark) */
+section.py-20.px-4.bg-gradient-to-b.from-transparent.to-gray-900:nth-of-type(7) {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+}
+
+/* Beta to Future (dark to transparent) */
+section.py-20.px-4.bg-gradient-to-b.from-transparent.to-gray-900:nth-of-type(8) {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* Future to Contact (transparent to dark) */
+section.py-20.px-4.bg-gradient-to-b.from-transparent.to-gray-900:nth-of-type(9) {
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+}
+
+/* Contact to Footer (dark) */
+footer.py-12.px-4.bg-gray-900 {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+/* Beta Form Input Styles */
+#betaForm input,
+#betaForm textarea,
+#betaForm select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    color: #fff;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Add glow effect on hover */
+#betaForm input:hover,
+#betaForm textarea:hover,
+#betaForm select:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced glow effect on focus */
+#betaForm input:focus,
+#betaForm textarea:focus,
+#betaForm select:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Style for select dropdown */
+#betaForm select option {
+    background-color: #1a1d24;
+    color: #fff;
+}
+
+/* Add subtle animation for focus transition */
+#betaForm input,
+#betaForm textarea,
+#betaForm select {
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+/* Style for checkboxes */
+#betaForm input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+#betaForm input[type="checkbox"]:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}

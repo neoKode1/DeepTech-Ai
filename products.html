@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - DeepTech AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="styles/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-white font-bold text-xl">DeepTech AI</a>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="products.html" class="text-gray-300 hover:text-white transition-colors">Products</a>
+                    <a href="beta.html" class="text-gray-300 hover:text-white transition-colors">Beta Program</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen relative overflow-hidden pt-20">
+        <div class="absolute inset-0">
+            <video autoplay muted loop class="w-full h-full object-cover">
+                <source src="media/videos/video4.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="title-overlay">
+            <div class="text-center w-full">
+                <h1 class="text-5xl font-bold mb-4 text-white">Our Products</h1>
+                <p class="text-xl text-gray-300">Cutting-edge AI Solutions for Creative Professionals</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-transparent">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Narrative AI -->
+                <div class="card-gradient p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Narrative AI</h3>
+                    <p class="text-gray-400 mb-4">Web application for generating and animating images with voice integration.</p>
+                    <ul class="text-gray-400 list-disc list-inside mb-4">
+                        <li>AI Image Generation</li>
+                        <li>Animation Creation</li>
+                        <li>Voice Integration</li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="showModal('narrative')" class="text-blue-400 hover:text-blue-300">Learn More →</a>
+                </div>
+
+                <!-- Streamy -->
+                <div class="card-gradient p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Streamy</h3>
+                    <p class="text-gray-400 mb-4">AI-powered live streaming platform with advanced avatar technology and real-time interactions.</p>
+                    <ul class="text-gray-400 list-disc list-inside mb-4">
+                        <li>Real-time avatar customization</li>
+                        <li>Ultra-low latency streaming</li>
+                        <li>AI-powered chat moderation</li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="showModal('streamy')" class="text-blue-400 hover:text-blue-300">Learn More →</a>
+                </div>
+
+                <!-- Medusa.io -->
+                <div class="card-gradient p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-4">Medusa.io</h3>
+                    <p class="text-gray-400 mb-4">Creative suite combining multiple AI models for stunning image and video generation.</p>
+                    <ul class="text-gray-400 list-disc list-inside mb-4">
+                        <li>Text-to-Image Generation</li>
+                        <li>Image-to-Video Transformation</li>
+                        <li>Smart Prompt Generation</li>
+                    </ul>
+                    <a href="javascript:void(0)" onclick="showModal('medusa')" class="text-blue-400 hover:text-blue-300">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-transparent to-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-white text-center">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- AI Features -->
+                <div class="tech-box">
+                    <h3 class="text-2xl font-bold mb-4 text-white">AI Capabilities</h3>
+                    <ul class="text-gray-300 space-y-3">
+                        <li>• Advanced Image Generation</li>
+                        <li>• Real-time Video Processing</li>
+                        <li>• Natural Language Understanding</li>
+                        <li>• Voice Synthesis & Recognition</li>
+                        <li>• Motion Capture & Transfer</li>
+                    </ul>
+                </div>
+
+                <!-- Technical Features -->
+                <div class="tech-box">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Technical Features</h3>
+                    <ul class="text-gray-300 space-y-3">
+                        <li>• Cloud-based Processing</li>
+                        <li>• Real-time Collaboration</li>
+                        <li>• API Integration</li>
+                        <li>• Custom Model Training</li>
+                        <li>• Enterprise-grade Security</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-gray-900">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex justify-center space-x-6">
+                <!-- Same social links as index.html -->
+                <a href="https://x.com/io2Medusa" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                    </svg>
+                </a>
+                <a href="https://github.com/neoKode1" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+            <p class="mt-4 text-gray-400">© 2024 DeepTech AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Container -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-gray-900 p-8 rounded-xl max-w-2xl mx-4 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html> 

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beta Program - DeepTech AI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="styles/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-white font-bold text-xl">DeepTech AI</a>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="index.html#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="index.html#products" class="text-gray-300 hover:text-white transition-colors">Products</a>
+                    <a href="beta.html" class="text-gray-300 hover:text-white transition-colors">Beta Program</a>
+                    <a href="index.html#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen relative overflow-hidden pt-20">
+        <div class="absolute inset-0">
+            <video autoplay muted loop class="w-full h-full object-cover">
+                <source src="media/videos/video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="title-overlay">
+            <div class="text-center w-full">
+                <h1 class="text-5xl font-bold mb-4 text-white">Beta Program</h1>
+                <p class="text-xl text-gray-300">Join us in shaping the future of AI technology</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beta Form Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-transparent">
+        <div class="max-w-4xl mx-auto">
+            <div class="beta-box">
+                <h2 class="text-3xl font-bold mb-8 text-white text-center">Apply for Beta Access</h2>
+                <form id="betaForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-300 mb-2">Name</label>
+                            <input type="text" name="name" required class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Professional Role</label>
+                        <select name="role" required class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500">
+                            <option value="developer">Developer</option>
+                            <option value="content_creator">Content Creator</option>
+                            <option value="filmmaker">Filmmaker</option>
+                            <option value="studio">Studio Professional</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Interested Products</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="products" value="narrative" class="mr-2">
+                                <span class="text-gray-300">Narrative AI</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="products" value="streamy" class="mr-2">
+                                <span class="text-gray-300">Streamy</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="products" value="medusa" class="mr-2">
+                                <span class="text-gray-300">Medusa.io</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Experience Level</label>
+                        <select name="experience" required class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="professional">Professional</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300 mb-2">Why do you want to join the beta?</label>
+                        <textarea name="reason" required rows="3" class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-transparent border border-gray-600 text-white py-3 px-6 rounded-lg hover:border-white hover:shadow-glow transition-all">
+                        Submit Application
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-gray-900">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex justify-center space-x-6">
+                <!-- Same footer content as index.html -->
+            </div>
+            <p class="mt-4 text-gray-400">© 2024 DeepTech AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html> 

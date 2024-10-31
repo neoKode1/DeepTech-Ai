@@ -6,274 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeepTech AI - Pioneering AI Solutions</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #0a0a0a;
-            color: #e5e5e5;
-        }
-
-        .card-gradient {
-            position: relative;
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        .card-gradient:hover {
-            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
-        }
-
-        .gradient-text {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .card-gradient {
-            border: 1px solid rgba(128, 128, 128, 0.3);
-            /* Thin grey outline */
-            border-radius: 0.75rem;
-            /* Matches the rounded-xl class */
-        }
-
-        /* Modal Styles */
-        #modal .bg-gray-900 {
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        @media (min-width: 768px) {
-            #modal .bg-gray-900 {
-                width: 60%;
-                max-width: 800px;
-            }
-        }
-
-        /* Adjust the close button */
-        #modal button {
-            top: 10px;
-            right: 10px;
-        }
-
-        .gallery-container {
-            position: relative;
-            height: 500px;
-            /* Increased height for better visibility */
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .gallery-item {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: all 2s ease-in-out;
-            transform: scale(1.05);
-        }
-
-        .gallery-item video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.8);
-            /* Slightly dim the videos */
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg,
-                    rgba(0, 0, 0, 0.4),
-                    rgba(0, 0, 0, 0.2));
-            z-index: 1;
-        }
-
-        .gallery-item.active {
-            opacity: 1;
-            transform: scale(1);
-            z-index: 2;
-        }
-
-        .gallery-item.prev {
-            opacity: 0;
-            transform: scale(1.1);
-            z-index: 1;
-            transition: all 2s ease-in-out;
-        }
-
-        /* Add a subtle glow effect on transition */
-        .gallery-item.active::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg,
-                    rgba(0, 204, 255, 0.1),
-                    rgba(0, 255, 136, 0.1));
-            z-index: 2;
-            opacity: 0;
-            animation: glowPulse 4s infinite;
-        }
-
-        @keyframes glowPulse {
-            0% {
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-        .main-title {
-            font-size: 3.5rem;
-            font-weight: 300;
-            color: white;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-            /* Align text baselines */
-        }
-
-        .deeptech {
-            letter-spacing: 0.4em;
-            font-size: 2.5rem;
-            margin-right: 0.8em;
-            /* Specific spacing between DEEPTECH and AI */
-        }
-
-        .ai-text {
-            font-size: 5rem;
-            letter-spacing: 0.15em;
-            /* Tighter spacing between A and I */
-        }
-
-        .a-letter {
-            margin-right: 0.1em;
-        }
-
-        @media (max-width: 768px) {
-            .main-title {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .deeptech {
-                font-size: 1.8rem;
-                margin-right: 0;
-            }
-
-            .ai-text {
-                font-size: 3.5rem;
-            }
-        }
-
-        .title-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            /* Slightly darker overlay */
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .main-title {
-            position: relative;
-            z-index: 11;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .bottom-gallery-container {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            margin: 2rem auto;
-            border-radius: 0.5rem;
-        }
-
-        .bottom-gallery-item {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .bottom-gallery-item.active {
-            opacity: 1;
-        }
-
-        .bottom-gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 0.5rem;
-        }
-
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .modal-title {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #f8faf9, #00ccff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* Add or update these styles */
-        .min-h-screen {
-            min-height: calc(100vh - 5rem);
-            /* Increased padding space */
-            padding-top: 5rem;
-            /* Added top padding */
-        }
-
-        @media (max-width: 768px) {
-            .min-h-screen {
-                min-height: calc(100vh - 3rem);
-                padding-top: 3rem;
-                /* Smaller padding for mobile */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .min-h-screen {
-                min-height: calc(100vh - 3rem);
-                padding-top: 3rem;
-                /* Smaller padding for mobile */
-            }
-        }
-    </style>
+    <link href="styles/styles.css" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-white font-bold text-xl">DeepTech AI</a>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="products.html" class="text-gray-300 hover:text-white transition-colors">Products</a>
+                    <a href="beta.html" class="text-gray-300 hover:text-white transition-colors">Beta Program</a>
+                    <a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section with Video Slider -->
     <section class="min-h-screen relative overflow-hidden pt-20">
         <div class="absolute inset-0">
             <video autoplay muted loop class="w-full h-full object-cover">
-                <source src="media/zana.mp4" type="video/mp4">
+                <source src="media/videos/zana.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -288,6 +45,39 @@
                     </h1>
                 </div>
                 <p class="text-xl text-gray-300 mt-6">Welcome to The Future of AI Tech & Media</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Move About Section here, right after Hero -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-transparent about-overlay">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 gradient-text text-center">About DeepTech AI</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <p class="text-gray-300 leading-relaxed">
+                        DeepTech AI is at the forefront of artificial intelligence innovation, specializing in creating cutting-edge solutions that bridge the gap between technology and human creativity. Our mission is to democratize AI technology, making it accessible and practical for creators, businesses, and innovators worldwide.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Founded by passionate technologists and creatives, we're building the next generation of AI-powered tools that enhance human capabilities rather than replace them. Our suite of products - Narrative AI, Streamy, and Medusa.io - represents our commitment to pushing the boundaries of what's possible with AI.
+                    </p>
+                </div>
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold gradient-text">Our Vision</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        We envision a future where AI empowers creators to bring their wildest imaginations to life. Through our innovative platforms, we're making this future a reality today.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="vision-box">
+                            <h4 class="font-bold text-white mb-2">Innovation</h4>
+                            <p class="text-gray-400">Pushing boundaries in AI technology</p>
+                        </div>
+                        <div class="vision-box">
+                            <h4 class="font-bold text-white mb-2">Accessibility</h4>
+                            <p class="text-gray-400">Making AI tools available to everyone</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -342,39 +132,212 @@
         </div>
     </section>
 
-    <!-- Future & Social Section -->
+    <!-- Cinematic Capabilities Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-transparent to-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-white text-center">Professional Cinema Creation</h2>
+            <p class="text-xl text-gray-300 text-center mb-12">Transform your vision into cinema with professional-grade video generation technology.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Professional Cinematography -->
+                <div class="tech-box">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Professional Cinematography</h3>
+                    <ul class="text-gray-300 space-y-3">
+                        <li>• Cinema-Quality 768p Output</li>
+                        <li>• Industry-Standard 24 FPS</li>
+                        <li>• Multiple Aspect Ratios</li>
+                        <li>• Professional Dynamic Range</li>
+                        <li>• Advanced Motion Control</li>
+                    </ul>
+                </div>
+                
+                <!-- Creative Suite -->
+                <div class="tech-box">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Creative Suite</h3>
+                    <ul class="text-gray-300 space-y-3">
+                        <li>• Scene Generation</li>
+                        <li>• Shot Design</li>
+                        <li>• Visual Development</li>
+                        <li>• Environment Creation</li>
+                        <li>• Character Visualization</li>
+                    </ul>
+                </div>
+                
+                <!-- Production Workflow -->
+                <div class="tech-box">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Production Workflow</h3>
+                    <ul class="text-gray-300 space-y-3">
+                        <li>• Development & Planning</li>
+                        <li>• Pre-Production Tools</li>
+                        <li>• Production Integration</li>
+                        <li>• Post-Production Suite</li>
+                        <li>• Pipeline Compatibility</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Applications Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-transparent">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-white text-center">Industry Applications</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Film Production -->
+                <div class="vision-box">
+                    <h4 class="text-2xl font-bold text-white mb-4">Film Production</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <h5 class="text-white font-bold mb-2">Pre-Visualization</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• Storyboard animation</li>
+                                <li>• Shot planning</li>
+                                <li>• Scene blocking</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-bold mb-2">Production</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• Background plate generation</li>
+                                <li>• Set extension creation</li>
+                                <li>• Environmental effects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Creation -->
+                <div class="vision-box">
+                    <h4 class="text-2xl font-bold text-white mb-4">Content Creation</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <h5 class="text-white font-bold mb-2">YouTube Production</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• High-quality b-roll generation</li>
+                                <li>• Custom intro sequences</li>
+                                <li>• Transition effects</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="text-white font-bold mb-2">Commercial Production</h5>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>• Product demonstrations</li>
+                                <li>• Brand videos</li>
+                                <li>• Marketing content</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Excellence Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-transparent">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 text-white text-center">Technical Excellence</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="tech-box">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Architecture</h3>
+                    <ul class="text-gray-300 space-y-3">
+                        <li>• Next.js 14 with Server Components</li>
+                        <li>• FastAPI Backend Architecture</li>
+                        <li>• WebRTC for Real-time Streaming</li>
+                        <li>• Redis for State Management</li>
+                        <li>• PostgreSQL Database</li>
+                    </ul>
+                </div>
+                <div class="tech-box">
+                    <h3 class="text-2xl font-bold mb-4 text-white">AI Integration</h3>
+                    <ul class="text-gray-300 space-y-3">
+                        <li>• Multiple LLM Support</li>
+                        <li>• Custom Fine-tuned Models</li>
+                        <li>• Real-time AI Processing</li>
+                        <li>• Multi-modal AI Systems</li>
+                        <li>• Advanced Prompt Engineering</li>
+                    </ul>
+                </div>
+                <div class="tech-box">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Infrastructure</h3>
+                    <ul class="text-gray-300 space-y-3">
+                        <li>• Google Cloud Platform</li>
+                        <li>• Kubernetes Orchestration</li>
+                        <li>• CI/CD with GitHub Actions</li>
+                        <li>• Load Balancing & Auto-scaling</li>
+                        <li>• Global CDN Distribution</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beta Access Program Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-transparent to-gray-900">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="beta-box">
+                <h2 class="text-4xl font-bold mb-6 text-white">Beta Access Program</h2>
+                <p class="text-xl text-gray-300 mb-8">Join our exclusive beta testing program and get early access to our cutting-edge AI tools.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="feature-box">
+                        <h4 class="font-bold text-white mb-2">Beta Benefits</h4>
+                        <ul class="text-gray-300 text-left space-y-2">
+                            <li>• Early access to new features</li>
+                            <li>• Direct developer support</li>
+                            <li>• Influence product development</li>
+                            <li>• Free credits for testing</li>
+                        </ul>
+                    </div>
+                    <div class="feature-box">
+                        <h4 class="font-bold text-white mb-2">Current Beta Products</h4>
+                        <ul class="text-gray-300 text-left space-y-2">
+                            <li>• Narrative AI v0.9.5</li>
+                            <li>• Streamy Beta Build</li>
+                            <li>• Medusa.io Preview</li>
+                            <li>• API Access (Limited)</li>
+                        </ul>
+                    </div>
+                </div>
+                <button onclick="showModal('beta')" class="beta-button text-white py-3 px-8 rounded-lg text-lg font-semibold">
+                    Request Beta Access
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future & Social Section (now just Future Innovations) -->
     <section class="py-20 px-4 bg-gradient-to-b from-transparent to-gray-900">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="gallery-container">
                     <div class="gallery-item">
                         <video autoplay muted loop>
-                            <source src="media/video1.mp4" type="video/mp4">
+                            <source src="media/videos/video1.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="gallery-item">
                         <video autoplay muted loop>
-                            <source src="media/video2.mp4" type="video/mp4">
+                            <source src="media/videos/video2.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="gallery-item">
                         <video autoplay muted loop>
-                            <source src="media/video3.mp4" type="video/mp4">
+                            <source src="media/videos/video3.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="gallery-item">
                         <video autoplay muted loop>
-                            <source src="media/video4.mp4" type="video/mp4">
+                            <source src="media/videos/video4.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="gallery-item">
                         <video autoplay muted loop>
-                            <source src="media/video5.mp4" type="video/mp4">
+                            <source src="media/videos/video5.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="gallery-item">
                         <video autoplay muted loop>
-                            <source src="media/video6.mp4" type="video/mp4">
+                            <source src="media/videos/video6.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>
@@ -387,233 +350,72 @@
                         <li>Advanced AI-driven content creation tools</li>
                         <li>Enhanced monetization features</li>
                     </ul>
-                    <div class="flex space-x-6">
-                        <a href="https://x.com/io2Medusa" target="_blank" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                            </svg>
-                        </a>
-                        <a href="https://x.com/JusChadneo" target="_blank" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                            </svg>
-                        </a>
-                        <a href="https://github.com/neoKode1" target="_blank" class="text-gray-400 hover:text-white">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <script>
-        const videoGalleryItems = document.querySelectorAll('.gallery-item');
-        let currentVideoItem = 0;
+    <!-- Contact Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-transparent to-gray-900">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12 gradient-text text-center">Get in Touch</h2>
+            <div class="contact-box">
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-gray-300 mb-2">Subject</label>
+                        <select id="subject" name="subject" class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                            <option value="general">General Inquiry</option>
+                            <option value="narrative">Narrative AI</option>
+                            <option value="streamy">Streamy</option>
+                            <option value="medusa">Medusa.io</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-300 mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full text-white py-3 px-6 rounded-lg transition-all">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-        function rotateVideoGallery() {
-            // Remove prev class from all items
-            videoGalleryItems.forEach(item => item.classList.remove('prev'));
-
-            // Add prev class to current active item
-            videoGalleryItems[currentVideoItem].classList.add('prev');
-            videoGalleryItems[currentVideoItem].classList.remove('active');
-
-            // Calculate next item
-            currentVideoItem = (currentVideoItem + 1) % videoGalleryItems.length;
-
-            // Add active class to next item
-            videoGalleryItems[currentVideoItem].classList.add('active');
-        }
-
-        // Initialize first item
-        videoGalleryItems[0].classList.add('active');
-
-        // Start rotation with longer interval for better effect
-        setInterval(rotateVideoGallery, 8000); // 8 seconds to allow for transition
-
-        // Preload videos for smoother playback
-        videoGalleryItems.forEach(item => {
-            const video = item.querySelector('video');
-            if (video) {
-                video.load();
-            }
-        });
-
-        const modalContent = {
-            narrative: {
-                title: "Narrative AI",
-                description: "Narrative AI is a web application that allows users to generate images, animate them, and add voice to create a complete narrative. It utilizes the Hugging Face API to generate images based on user input prompts and integrates with a backend server for handling requests.",
-                features: [
-                    "AI Image Generation - Generate high-quality images based on user input prompts using advanced AI models.",
-                    "Animation Creation - Create smooth and engaging animations from generated images.",
-                    "Voice Integration - Add voiceovers to your animations to create a complete narrative experience.",
-                    "Interactive Storytelling - Engage users with interactive storytelling elements that respond to user inputs.",
-                    "Real-time Rendering - Experience real-time rendering of images and animations for immediate feedback."
-                ]
-            },
-            streamy: {
-                title: "Streamy",
-                description: "Streamy is a next-generation live streaming platform that combines AI technology with interactive content creation. Our platform enables creators to stream content with enhanced AI features while building meaningful connections with their audience.",
-                features: [
-                    "Google Authentication - Secure and easy login using Google accounts.",
-                    "Cloud Storage Integration - Store and manage your streaming content using Google Cloud Storage.",
-                    "Responsive Design - Enjoy a seamless experience across all devices with our responsive design.",
-                    "Real-time Streaming Interface - Stream content in real-time with low latency and high quality.",
-                    "AI-powered Content Moderation - Automatically moderate content using AI to ensure a safe streaming environment (upcoming).",
-                    "Real-time Chat - Engage with your audience through real-time chat during live streams (upcoming).",
-                    "Custom Streaming Overlays - Personalize your streams with custom overlays (upcoming).",
-                    "Analytics Dashboard - Gain insights into your streaming performance with our analytics dashboard (upcoming)."
-                ]
-            },
-            medusa: {
-                title: "Medusa.io",
-                description: "Medusa.io is a creative suite combining multiple AI models for stunning image and video generation. It leverages advanced AI technologies to provide a seamless experience for users looking to create high-quality content.",
-                features: [
-                    "Text to Image Generation - Multiple model support (Stable Diffusion, DALL·E 3, Midjourney, etc.), reference image upload, style and genre customization, high-resolution output.",
-                    "Image to Video Creation - LumaAI integration, AnimateDiff support, motion transfer capabilities, custom duration and ratio settings.",
-                    "AI Prompt Generation - Genre-specific suggestions, movie and book reference integration, style customization, mode-specific prompts (image/video).",
-                    "Frontend - Built with Next.js 14, TypeScript, and Tailwind CSS for a modern and responsive user interface.",
-                    "Backend - Powered by FastAPI and Python for efficient and scalable backend services.",
-                    "AI Services - Integration with OpenAI, LumaAI, and Replicate for advanced AI functionalities.",
-                    "Authentication - Secure user authentication using NextAuth.js.",
-                    "Storage - Local storage with plans for cloud storage integration."
-                ]
-            }
-        };
-
-        function showModal(product) {
-            const modal = document.getElementById('modal');
-            const content = modalContent[product];
-            const modalContentDiv = document.getElementById('modalContent');
-
-            modalContentDiv.innerHTML = `
-                <h3 class="modal-title">${content.title}</h3>
-                <p class="text-gray-300 mb-4">${content.description}</p>
-                <h4 class="text-white font-bold mb-2">Key Features:</h4>
-                <ul class="text-gray-300 space-y-2 mb-4">
-                    ${content.features.map(feature => `<li>• ${feature}</li>`).join('')}
-                </ul>
-            `;
-
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        // Update the Learn More links
-        document.querySelectorAll('.card-gradient').forEach((card, index) => {
-            const link = card.querySelector('a');
-            link.href = 'javascript:void(0)';
-            link.onclick = () => showModal(['streamy', 'medusa', 'narrative'][index]);
-        });
-        // Update the Learn More links
-        document.querySelectorAll('.card-gradient').forEach((card, index) => {
-            const link = card.querySelector('a');
-            link.href = 'javascript:void(0)';
-            link.onclick = () => showModal(['narrative', 'streamy', 'medusa'][index]);
-        });
-        // Update the Learn More links
-        document.querySelectorAll('.card-gradient').forEach((card, index) => {
-            const link = card.querySelector('a');
-            link.href = 'javascript:void(0)';
-            link.onclick = () => showModal(['narrative', 'streamy', 'medusa'][index]);
-        });
-    </script>
-    <script>
-        const modal = {
-            narrative: {
-                title: "Narrative AI",
-                description: "Narrative AI is a web application that allows users to generate images, animate them, and add voice to create a complete narrative. It utilizes the Hugging Face API to generate images based on user input prompts and integrates with a backend server for handling requests.",
-                features: [
-                    "AI Image Generation - Generate high-quality images based on user input prompts using advanced AI models.",
-                    "Animation Creation - Create smooth and engaging animations from generated images.",
-                    "Voice Integration - Add voiceovers to your animations to create a complete narrative experience.",
-                    "Interactive Storytelling - Engage users with interactive storytelling elements that respond to user inputs.",
-                    "Real-time Rendering - Experience real-time rendering of images and animations for immediate feedback."
-                ]
-            },
-            streamy: {
-                title: "Streamy",
-                description: "Streamy is a next-generation live streaming platform that combines AI technology with interactive content creation. Our platform enables creators to stream content with enhanced AI features while building meaningful connections with their audience.",
-                features: [
-                    "Google Authentication - Secure and easy login using Google accounts.",
-                    "Cloud Storage Integration - Store and manage your streaming content using Google Cloud Storage.",
-                    "Responsive Design - Enjoy a seamless experience across all devices with our responsive design.",
-                    "Real-time Streaming Interface - Stream content in real-time with low latency and high quality.",
-                    "AI-powered Content Moderation - Automatically moderate content using AI to ensure a safe streaming environment (upcoming).",
-                    "Real-time Chat - Engage with your audience through real-time chat during live streams (upcoming).",
-                    "Custom Streaming Overlays - Personalize your streams with custom overlays (upcoming).",
-                    "Analytics Dashboard - Gain insights into your streaming performance with our analytics dashboard (upcoming)."
-                ]
-            },
-            medusa: {
-                title: "Medusa.io",
-                description: "Medusa.io is a creative suite combining multiple AI models for stunning image and video generation. It leverages advanced AI technologies to provide a seamless experience for users looking to create high-quality content.",
-                features: [
-                    "Text to Image Generation - Multiple model support (Stable Diffusion, DALL·E 3, Midjourney, etc.), reference image upload, style and genre customization, high-resolution output.",
-                    "Image to Video Creation - LumaAI integration, AnimateDiff support, motion transfer capabilities, custom duration and ratio settings.",
-                    "AI Prompt Generation - Genre-specific suggestions, movie and book reference integration, style customization, mode-specific prompts (image/video).",
-                    "Frontend - Built with Next.js 14, TypeScript, and Tailwind CSS for a modern and responsive user interface.",
-                    "Backend - Powered by FastAPI and Python for efficient and scalable backend services.",
-                    "AI Services - Integration with OpenAI, LumaAI, and Replicate for advanced AI functionalities.",
-                    "Authentication - Secure user authentication using NextAuth.js.",
-                    "Storage - Local storage with plans for cloud storage integration."
-                ]
-            }
-        };
-
-        function showModal(product) {
-            const modal = document.getElementById('modal');
-            const content = modalContent[product];
-            const modalContentDiv = document.getElementById('modalContent');
-
-            modalContentDiv.innerHTML = `
-                <h3 class="modal-title">${content.title}</h3>
-                <p class="text-gray-300 mb-4">${content.description}</p>
-                <h4 class="text-white font-bold mb-2">Key Features:</h4>
-                <ul class="text-gray-300 space-y-2 mb-4">
-                    ${content.features.map(feature => `<li>• ${feature}</li>`).join('')}
-                </ul>
-            `;
-
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        modal.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Update the Learn More links
-        document.querySelectorAll('.card-gradient').forEach((card, index) => {
-            const link = card.querySelector('a');
-            link.href = 'javascript:void(0)';
-            link.onclick = () => showModal(['narrative', 'streamy', 'medusa'][index]);
-        });
-
-        
-    </script>
-
-    <!-- Add this right before the closing </body> tag -->
+    <!-- Footer with Social Links -->
+    <footer class="py-12 px-4 bg-gray-900">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex justify-center space-x-6">
+                <a href="https://x.com/io2Medusa" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                    </svg>
+                </a>
+                <a href="https://x.com/JusChadneo" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                    </svg>
+                </a>
+                <a href="https://github.com/neoKode1" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+            </div>
+            <p class="mt-4 text-gray-400">© 2024 DeepTech AI. All rights reserved.</p>
+        </div>
+    </footer>
 
     <!-- Modal Container -->
     <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
@@ -626,6 +428,17 @@
             <div id="modalContent"></div>
         </div>
     </div>
+
+    <!-- Add before your main.js script -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your public key
+        })();
+    </script>
+
+    <!-- Move script tag here -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
