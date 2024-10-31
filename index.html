@@ -35,6 +35,27 @@
             /* Matches the rounded-xl class */
         }
 
+        /* Modal Styles */
+        #modal .bg-gray-900 {
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        @media (min-width: 768px) {
+            #modal .bg-gray-900 {
+                width: 60%;
+                max-width: 800px;
+            }
+        }
+
+        /* Adjust the close button */
+        #modal button {
+            top: 10px;
+            right: 10px;
+        }
+
         .gallery-container {
             position: relative;
             height: 500px;
@@ -227,6 +248,14 @@
             /* Increased padding space */
             padding-top: 5rem;
             /* Added top padding */
+        }
+
+        @media (max-width: 768px) {
+            .min-h-screen {
+                min-height: calc(100vh - 3rem);
+                padding-top: 3rem;
+                /* Smaller padding for mobile */
+            }
         }
 
         @media (max-width: 768px) {
