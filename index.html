@@ -12,6 +12,15 @@
             color: #e5e5e5;
         }
 
+        .card-gradient {
+            position: relative;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .card-gradient:hover {
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
+        }
+
         .gradient-text {
             background: linear-gradient(45deg, #00ff88, #00ccff);
             -webkit-background-clip: text;
@@ -20,13 +29,16 @@
         }
 
         .card-gradient {
-            border: 1px solid rgba(128, 128, 128, 0.3); /* Thin grey outline */
-            border-radius: 0.75rem; /* Matches the rounded-xl class */
+            border: 1px solid rgba(128, 128, 128, 0.3);
+            /* Thin grey outline */
+            border-radius: 0.75rem;
+            /* Matches the rounded-xl class */
         }
 
         .gallery-container {
             position: relative;
-            height: 500px;  /* Increased height for better visibility */
+            height: 500px;
+            /* Increased height for better visibility */
             overflow: hidden;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -45,7 +57,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.8);  /* Slightly dim the videos */
+            filter: brightness(0.8);
+            /* Slightly dim the videos */
         }
 
         .gallery-item::after {
@@ -55,11 +68,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(
-                45deg,
-                rgba(0, 0, 0, 0.4),
-                rgba(0, 0, 0, 0.2)
-            );
+            background: linear-gradient(45deg,
+                    rgba(0, 0, 0, 0.4),
+                    rgba(0, 0, 0, 0.2));
             z-index: 1;
         }
 
@@ -84,20 +95,26 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(0, 204, 255, 0.1),
-                rgba(0, 255, 136, 0.1)
-            );
+            background: linear-gradient(135deg,
+                    rgba(0, 204, 255, 0.1),
+                    rgba(0, 255, 136, 0.1));
             z-index: 2;
             opacity: 0;
             animation: glowPulse 4s infinite;
         }
 
         @keyframes glowPulse {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
         }
 
         .main-title {
@@ -107,18 +124,21 @@
             text-align: center;
             display: flex;
             justify-content: center;
-            align-items: baseline; /* Align text baselines */
+            align-items: baseline;
+            /* Align text baselines */
         }
 
         .deeptech {
             letter-spacing: 0.4em;
             font-size: 2.5rem;
-            margin-right: 0.8em; /* Specific spacing between DEEPTECH and AI */
+            margin-right: 0.8em;
+            /* Specific spacing between DEEPTECH and AI */
         }
 
         .ai-text {
             font-size: 5rem;
-            letter-spacing: 0.15em; /* Tighter spacing between A and I */
+            letter-spacing: 0.15em;
+            /* Tighter spacing between A and I */
         }
 
         .a-letter {
@@ -130,7 +150,7 @@
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .deeptech {
                 font-size: 1.8rem;
                 margin-right: 0;
@@ -144,7 +164,8 @@
         .title-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.5); /* Slightly darker overlay */
+            background: rgba(0, 0, 0, 0.5);
+            /* Slightly darker overlay */
             z-index: 10;
             display: flex;
             align-items: center;
@@ -202,24 +223,30 @@
 
         /* Add or update these styles */
         .min-h-screen {
-            min-height: calc(100vh - 5rem); /* Increased padding space */
-            padding-top: 5rem; /* Added top padding */
+            min-height: calc(100vh - 5rem);
+            /* Increased padding space */
+            padding-top: 5rem;
+            /* Added top padding */
         }
 
         @media (max-width: 768px) {
             .min-h-screen {
                 min-height: calc(100vh - 3rem);
-                padding-top: 3rem; /* Smaller padding for mobile */
+                padding-top: 3rem;
+                /* Smaller padding for mobile */
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Hero Section with Image Slider -->
+    <!-- Hero Section with Video Slider -->
     <section class="min-h-screen relative overflow-hidden pt-20">
         <div class="absolute inset-0">
-            <img src="media/IMG_5136.JPG" alt="DeepTech AI Hero" class="w-full h-full object-cover">
+            <video autoplay muted loop class="w-full h-full object-cover">
+                <source src="media/zana.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
 
         <!-- Separate overlay for title -->
@@ -231,7 +258,7 @@
                         <span class="ai-text">A I</span>
                     </h1>
                 </div>
-                <p class="text-xl text-gray-300 mt-6">The Future of AI Media &Technology</p>
+                <p class="text-xl text-gray-300 mt-6">Welcome to The Future of AI Tech & Media</p>
             </div>
         </div>
     </section>
@@ -240,6 +267,20 @@
     <section class="py-20 px-4">
         <h2 class="text-4xl font-bold mb-12 gradient-text text-center" style="color: white;">Our Innovations</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Narrative AI -->
+            <div class="card-gradient p-6 rounded-xl">
+                <h3 class="text-2xl font-bold mb-4">Narrative AI</h3>
+                <p class="text-gray-400 mb-4">Web application for generating and animating images with voice
+                    integration.</p>
+                <ul class="text-gray-400 list-disc list-inside mb-4">
+                    <li>AI Image Generation</li>
+                    <li>Animation Creation</li>
+                    <li>Voice Integration</li>
+                </ul>
+                <a href="javascript:void(0)" onclick="showModal('narrative')"
+                    class="text-blue-400 hover:text-blue-300">Learn More →</a>
+            </div>
+
             <!-- Streamy -->
             <div class="card-gradient p-6 rounded-xl">
                 <h3 class="text-2xl font-bold mb-4">Streamy</h3>
@@ -250,7 +291,8 @@
                     <li>Ultra-low latency streaming</li>
                     <li>AI-powered chat moderation</li>
                 </ul>
-                <a href="javascript:void(0)" onclick="showModal('streamy')" class="text-blue-400 hover:text-blue-300">Learn More →</a>
+                <a href="javascript:void(0)" onclick="showModal('streamy')"
+                    class="text-blue-400 hover:text-blue-300">Learn More →</a>
             </div>
 
             <!-- Medusa.io -->
@@ -263,21 +305,11 @@
                     <li>Image-to-Video Transformation</li>
                     <li>Smart Prompt Generation</li>
                 </ul>
-                <a href="javascript:void(0)" onclick="showModal('medusa')" class="text-blue-400 hover:text-blue-300">Learn More →</a>
+                <a href="javascript:void(0)" onclick="showModal('medusa')"
+                    class="text-blue-400 hover:text-blue-300">Learn More →</a>
             </div>
 
-            <!-- Narrative AI -->
-            <div class="card-gradient p-6 rounded-xl">
-                <h3 class="text-2xl font-bold mb-4">Narrative AI</h3>
-                <p class="text-gray-400 mb-4">Web application for generating and animating images with voice
-                    integration.</p>
-                <ul class="text-gray-400 list-disc list-inside mb-4">
-                    <li>AI Image Generation</li>
-                    <li>Animation Creation</li>
-                    <li>Voice Integration</li>
-                </ul>
-                <a href="javascript:void(0)" onclick="showModal('narrative')" class="text-blue-400 hover:text-blue-300">Learn More →</a>
-            </div>
+
         </div>
     </section>
 
@@ -329,17 +361,20 @@
                     <div class="flex space-x-6">
                         <a href="https://x.com/io2Medusa" target="_blank" class="text-gray-400 hover:text-white">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                <path
+                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                             </svg>
                         </a>
                         <a href="https://x.com/JusChadneo" target="_blank" class="text-gray-400 hover:text-white">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                <path
+                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                             </svg>
                         </a>
                         <a href="https://github.com/neoKode1" target="_blank" class="text-gray-400 hover:text-white">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                             </svg>
                         </a>
                     </div>
@@ -382,41 +417,43 @@
         });
 
         const modalContent = {
+            narrative: {
+                title: "Narrative AI",
+                description: "Narrative AI is a web application that allows users to generate images, animate them, and add voice to create a complete narrative. It utilizes the Hugging Face API to generate images based on user input prompts and integrates with a backend server for handling requests.",
+                features: [
+                    "AI Image Generation - Generate high-quality images based on user input prompts using advanced AI models.",
+                    "Animation Creation - Create smooth and engaging animations from generated images.",
+                    "Voice Integration - Add voiceovers to your animations to create a complete narrative experience.",
+                    "Interactive Storytelling - Engage users with interactive storytelling elements that respond to user inputs.",
+                    "Real-time Rendering - Experience real-time rendering of images and animations for immediate feedback."
+                ]
+            },
             streamy: {
                 title: "Streamy",
-                description: "AI-powered live streaming platform with advanced avatar technology and real-time interactions.",
+                description: "Streamy is a next-generation live streaming platform that combines AI technology with interactive content creation. Our platform enables creators to stream content with enhanced AI features while building meaningful connections with their audience.",
                 features: [
-                    "Real-time avatar live streaming",
-                    "Real-time avatar customization",
-                    "Ultra-low latency streaming",
-                    "AI-powered chat moderation",
-                    "Advanced user interaction features",
-                    "Customizable streaming environments",
-                    "Live facial tracking and mapping",
-                    "Real-time expression mirroring",
-                    "Custom avatar creation tools"
+                    "Google Authentication - Secure and easy login using Google accounts.",
+                    "Cloud Storage Integration - Store and manage your streaming content using Google Cloud Storage.",
+                    "Responsive Design - Enjoy a seamless experience across all devices with our responsive design.",
+                    "Real-time Streaming Interface - Stream content in real-time with low latency and high quality.",
+                    "AI-powered Content Moderation - Automatically moderate content using AI to ensure a safe streaming environment (upcoming).",
+                    "Real-time Chat - Engage with your audience through real-time chat during live streams (upcoming).",
+                    "Custom Streaming Overlays - Personalize your streams with custom overlays (upcoming).",
+                    "Analytics Dashboard - Gain insights into your streaming performance with our analytics dashboard (upcoming)."
                 ]
             },
             medusa: {
                 title: "Medusa.io",
-                description: "Creative suite combining multiple AI models for stunning image and video generation.",
+                description: "Medusa.io is a creative suite combining multiple AI models for stunning image and video generation. It leverages advanced AI technologies to provide a seamless experience for users looking to create high-quality content.",
                 features: [
-                    "Text-to-Image Generation",
-                    "Image-to-Video Transformation",
-                    "Smart Prompt Generation",
-                    "Multi-model integration",
-                    "Advanced editing tools"
-                ]
-            },
-            narrative: {
-                title: "Narrative AI",
-                description: "Web-based AI application for generating and animating images with voice integration.",
-                features: [
-                    "AI Image Generation",
-                    "Animation Creation",
-                    "Voice Integration",
-                    "Interactive storytelling",
-                    "Real-time rendering"
+                    "Text to Image Generation - Multiple model support (Stable Diffusion, DALL·E 3, Midjourney, etc.), reference image upload, style and genre customization, high-resolution output.",
+                    "Image to Video Creation - LumaAI integration, AnimateDiff support, motion transfer capabilities, custom duration and ratio settings.",
+                    "AI Prompt Generation - Genre-specific suggestions, movie and book reference integration, style customization, mode-specific prompts (image/video).",
+                    "Frontend - Built with Next.js 14, TypeScript, and Tailwind CSS for a modern and responsive user interface.",
+                    "Backend - Powered by FastAPI and Python for efficient and scalable backend services.",
+                    "AI Services - Integration with OpenAI, LumaAI, and Replicate for advanced AI functionalities.",
+                    "Authentication - Secure user authentication using NextAuth.js.",
+                    "Storage - Local storage with plans for cloud storage integration."
                 ]
             }
         };
@@ -425,7 +462,7 @@
             const modal = document.getElementById('modal');
             const content = modalContent[product];
             const modalContentDiv = document.getElementById('modalContent');
-            
+
             modalContentDiv.innerHTML = `
                 <h3 class="modal-title">${content.title}</h3>
                 <p class="text-gray-300 mb-4">${content.description}</p>
@@ -434,7 +471,7 @@
                     ${content.features.map(feature => `<li>• ${feature}</li>`).join('')}
                 </ul>
             `;
-            
+
             modal.classList.remove('hidden');
             modal.classList.add('flex');
         }
@@ -451,6 +488,100 @@
             link.href = 'javascript:void(0)';
             link.onclick = () => showModal(['streamy', 'medusa', 'narrative'][index]);
         });
+        // Update the Learn More links
+        document.querySelectorAll('.card-gradient').forEach((card, index) => {
+            const link = card.querySelector('a');
+            link.href = 'javascript:void(0)';
+            link.onclick = () => showModal(['narrative', 'streamy', 'medusa'][index]);
+        });
+        // Update the Learn More links
+        document.querySelectorAll('.card-gradient').forEach((card, index) => {
+            const link = card.querySelector('a');
+            link.href = 'javascript:void(0)';
+            link.onclick = () => showModal(['narrative', 'streamy', 'medusa'][index]);
+        });
+    </script>
+    <script>
+        const modal = {
+            narrative: {
+                title: "Narrative AI",
+                description: "Narrative AI is a web application that allows users to generate images, animate them, and add voice to create a complete narrative. It utilizes the Hugging Face API to generate images based on user input prompts and integrates with a backend server for handling requests.",
+                features: [
+                    "AI Image Generation - Generate high-quality images based on user input prompts using advanced AI models.",
+                    "Animation Creation - Create smooth and engaging animations from generated images.",
+                    "Voice Integration - Add voiceovers to your animations to create a complete narrative experience.",
+                    "Interactive Storytelling - Engage users with interactive storytelling elements that respond to user inputs.",
+                    "Real-time Rendering - Experience real-time rendering of images and animations for immediate feedback."
+                ]
+            },
+            streamy: {
+                title: "Streamy",
+                description: "Streamy is a next-generation live streaming platform that combines AI technology with interactive content creation. Our platform enables creators to stream content with enhanced AI features while building meaningful connections with their audience.",
+                features: [
+                    "Google Authentication - Secure and easy login using Google accounts.",
+                    "Cloud Storage Integration - Store and manage your streaming content using Google Cloud Storage.",
+                    "Responsive Design - Enjoy a seamless experience across all devices with our responsive design.",
+                    "Real-time Streaming Interface - Stream content in real-time with low latency and high quality.",
+                    "AI-powered Content Moderation - Automatically moderate content using AI to ensure a safe streaming environment (upcoming).",
+                    "Real-time Chat - Engage with your audience through real-time chat during live streams (upcoming).",
+                    "Custom Streaming Overlays - Personalize your streams with custom overlays (upcoming).",
+                    "Analytics Dashboard - Gain insights into your streaming performance with our analytics dashboard (upcoming)."
+                ]
+            },
+            medusa: {
+                title: "Medusa.io",
+                description: "Medusa.io is a creative suite combining multiple AI models for stunning image and video generation. It leverages advanced AI technologies to provide a seamless experience for users looking to create high-quality content.",
+                features: [
+                    "Text to Image Generation - Multiple model support (Stable Diffusion, DALL·E 3, Midjourney, etc.), reference image upload, style and genre customization, high-resolution output.",
+                    "Image to Video Creation - LumaAI integration, AnimateDiff support, motion transfer capabilities, custom duration and ratio settings.",
+                    "AI Prompt Generation - Genre-specific suggestions, movie and book reference integration, style customization, mode-specific prompts (image/video).",
+                    "Frontend - Built with Next.js 14, TypeScript, and Tailwind CSS for a modern and responsive user interface.",
+                    "Backend - Powered by FastAPI and Python for efficient and scalable backend services.",
+                    "AI Services - Integration with OpenAI, LumaAI, and Replicate for advanced AI functionalities.",
+                    "Authentication - Secure user authentication using NextAuth.js.",
+                    "Storage - Local storage with plans for cloud storage integration."
+                ]
+            }
+        };
+
+        function showModal(product) {
+            const modal = document.getElementById('modal');
+            const content = modalContent[product];
+            const modalContentDiv = document.getElementById('modalContent');
+
+            modalContentDiv.innerHTML = `
+                <h3 class="modal-title">${content.title}</h3>
+                <p class="text-gray-300 mb-4">${content.description}</p>
+                <h4 class="text-white font-bold mb-2">Key Features:</h4>
+                <ul class="text-gray-300 space-y-2 mb-4">
+                    ${content.features.map(feature => `<li>• ${feature}</li>`).join('')}
+                </ul>
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Update the Learn More links
+        document.querySelectorAll('.card-gradient').forEach((card, index) => {
+            const link = card.querySelector('a');
+            link.href = 'javascript:void(0)';
+            link.onclick = () => showModal(['narrative', 'streamy', 'medusa'][index]);
+        });
+
+        
     </script>
 
     <!-- Add this right before the closing </body> tag -->
