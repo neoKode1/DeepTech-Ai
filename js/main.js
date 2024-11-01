@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Update the contact form handler
+// Contact form handler
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
@@ -228,17 +228,17 @@ document.getElementById('contactForm').addEventListener('submit', async function
             message: document.getElementById('message').value
         };
 
-        // Send notification to DeepTech AI
+        // Send notification to admin
         await emailjs.send(
-            'service_xxxxxx',  // Your service ID
-            'template_xxxxxx', // Your notification template ID
+            'service_qx53ezs',  // Replace with your service ID
+            'template_notification', // Replace with your notification template ID
             formData
         );
 
-        // Send auto-reply to client
+        // Send auto-reply to user
         await emailjs.send(
-            'service_xxxxxx',  // Your service ID
-            'template_autoreply', // Your auto-reply template ID
+            'service_qx53ezs',  // Replace with your service ID
+            'template_autoreply', // Replace with your auto-reply template ID
             formData
         );
 

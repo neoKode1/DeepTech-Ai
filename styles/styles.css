@@ -38,10 +38,7 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(45deg, #ffffff, #ffffff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #ffffff;
 }
 
 /* Modal Styles */
@@ -225,10 +222,7 @@ body {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  background: linear-gradient(45deg, #f8faf9, #00ccff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #ffffff;
 }
 
 /* Responsive Styles */
@@ -668,10 +662,7 @@ button[type="submit"]:hover::after,
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    background: linear-gradient(45deg, #f8faf9, #00ccff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #ffffff;
 }
 
 #modal ul li {
@@ -754,7 +745,7 @@ button[type="submit"]:hover::after,
 
 /* Update title overlay gradient */
 .title-overlay {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 /* Adjust section spacing */
