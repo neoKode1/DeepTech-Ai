@@ -230,14 +230,14 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
         // Send notification to admin
         await emailjs.send(
-            'service_qx53ezs',  // Replace with your service ID
+            'YOUR_SERVICE_ID',  // Replace with your service ID
             'template_notification', // Replace with your notification template ID
             formData
         );
 
         // Send auto-reply to user
         await emailjs.send(
-            'service_qx53ezs',  // Replace with your service ID
+            'YOUR_SERVICE_ID',  // Replace with your service ID
             'template_autoreply', // Replace with your auto-reply template ID
             formData
         );
@@ -344,3 +344,50 @@ function handleBetaForm(event) {
         }, 3000);
     });
 }
+
+// Video optimization
+document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('video');
+    
+    videos.forEach(video => {
+        // Add loading class
+        video.parentElement.classList.add('video-container');
+        
+        // Handle video loaded
+        video.addEventListener('loadeddata', function() {
+            video.parentElement.classList.add('loaded');
+        });
+
+        // Handle playback issues
+        video.addEventListener('stalled', function() {
+            video.load();
+            video.play().catch(() => {
+                // Fallback handling
+                console.log('Playback failed');
+            });
+        });
+
+        // Optimize memory usage
+        video.addEventListener('pause', function() {
+            if (document.hidden) {
+                video.src = '';
+                video.load();
+            }
+        });
+    });
+
+    // Handle visibility changes
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            videos.forEach(video => {
+                video.pause();
+            });
+        } else {
+            videos.forEach(video => {
+                video.play().catch(() => {
+                    console.log('Playback failed');
+                });
+            });
+        }
+    });
+});
