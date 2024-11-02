@@ -799,10 +799,19 @@ section + section {
 
 /* Hero to About (dark to transparent) */
 .about-overlay {
-    background: linear-gradient(180deg, 
-        rgba(0, 0, 0, 0.95) 0%,
-        rgba(0, 0, 0, 0) 100%
+    position: relative;
+    background: linear-gradient(to bottom, 
+        rgba(17, 24, 39, 1) 0%,
+        rgba(17, 24, 39, 0.95) 40%,
+        rgba(17, 24, 39, 0.8) 100%
     );
+    box-shadow: 0 -100px 100px -50px rgb(17 24 39) inset;
+}
+
+/* Ensure hero section video doesn't overflow */
+.min-h-screen {
+    min-height: calc(100vh - 4rem); /* Subtracting nav height */
+    max-height: 100vh;
 }
 
 /* About to Projects (transparent to dark) */
@@ -1051,4 +1060,46 @@ video {
 
 .video-container.loaded {
     opacity: 1;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .title-container {
+        padding: 0 1rem;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .gallery-container {
+        height: 300px;
+    }
+
+    .tech-box, .vision-box {
+        padding: 1rem;
+    }
+
+    .modal-content {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}
+
+/* Video optimizations */
+video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+.video-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Prevent layout shift */
+.aspect-video {
+    aspect-ratio: 16 / 9;
 }

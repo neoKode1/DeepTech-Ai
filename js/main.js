@@ -2,36 +2,39 @@
 const videoGalleryItems = document.querySelectorAll('.gallery-item');
 let currentVideoItem = 0;
 
-function rotateVideoGallery() {
-    // Remove prev class from all items
-    videoGalleryItems.forEach(item => item.classList.remove('prev'));
+// Only run video gallery code if elements exist
+if (videoGalleryItems.length > 0) {
+    function rotateVideoGallery() {
+        // Remove prev class from all items
+        videoGalleryItems.forEach(item => item.classList.remove('prev'));
 
-    // Add prev class to current active item
-    videoGalleryItems[currentVideoItem].classList.add('prev');
-    videoGalleryItems[currentVideoItem].classList.remove('active');
+        // Add prev class to current active item
+        videoGalleryItems[currentVideoItem].classList.add('prev');
+        videoGalleryItems[currentVideoItem].classList.remove('active');
 
-    // Calculate next item
-    currentVideoItem = (currentVideoItem + 1) % videoGalleryItems.length;
+        // Calculate next item
+        currentVideoItem = (currentVideoItem + 1) % videoGalleryItems.length;
 
-    // Add active class to next item
-    videoGalleryItems[currentVideoItem].classList.add('active');
-}
+        // Add active class to next item
+        videoGalleryItems[currentVideoItem].classList.add('active');
+    }
 
-// Initialize first item
-document.addEventListener('DOMContentLoaded', function() {
-    videoGalleryItems[0].classList.add('active');
+    // Initialize first item
+    document.addEventListener('DOMContentLoaded', function() {
+        videoGalleryItems[0].classList.add('active');
 
-    // Start rotation with longer interval for better effect
-    setInterval(rotateVideoGallery, 8000); // 8 seconds to allow for transition
+        // Start rotation with longer interval for better effect
+        setInterval(rotateVideoGallery, 8000); // 8 seconds to allow for transition
 
-    // Preload videos for smoother playback
-    videoGalleryItems.forEach(item => {
-        const video = item.querySelector('video');
-        if (video) {
-            video.load();
-        }
+        // Preload videos for smoother playback
+        videoGalleryItems.forEach(item => {
+            const video = item.querySelector('video');
+            if (video) {
+                video.load();
+            }
+        });
     });
-});
+}
 
 // Modal functionality
 const modalContent = {
@@ -187,207 +190,187 @@ function closeModal() {
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
-    // Modal click outside to close
-    const modal = document.getElementById('modal');
-    modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-
-    // Setup Learn More links
-    document.querySelectorAll('.card-gradient').forEach((card, index) => {
-        const link = card.querySelector('a');
-        link.href = 'javascript:void(0)';
-        link.onclick = () => showModal(['narrative', 'streamy', 'medusa'][index]);
-    });
-});
-
-// Contact form handler
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const submitButton = this.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.innerHTML;
-    
-    try {
-        // Show loading state
-        submitButton.disabled = true;
-        submitButton.innerHTML = `
-            <svg class="animate-spin h-5 w-5 mr-3 inline" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Sending...
-        `;
-
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
-        };
-
-        // Send notification to admin
-        await emailjs.send(
-            'YOUR_SERVICE_ID',  // Replace with your service ID
-            'template_notification', // Replace with your notification template ID
-            formData
-        );
-
-        // Send auto-reply to user
-        await emailjs.send(
-            'YOUR_SERVICE_ID',  // Replace with your service ID
-            'template_autoreply', // Replace with your auto-reply template ID
-            formData
-        );
-
-        // Show success message
-        submitButton.innerHTML = `
-            <svg class="h-5 w-5 mr-3 inline text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            Message Sent!
-        `;
-
-        // Reset form
-        document.getElementById('contactForm').reset();
-
-        // Reset button after 3 seconds
-        setTimeout(() => {
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalButtonText;
-        }, 3000);
-
-    } catch (error) {
-        console.error('Failed to send message:', error);
-        submitButton.innerHTML = `
-            <svg class="h-5 w-5 mr-3 inline text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-            Failed to Send
-        `;
-
-        // Reset button after 3 seconds
-        setTimeout(() => {
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalButtonText;
-        }, 3000);
-    }
-});
-
-// Add form handling functions
-function handleBetaForm(event) {
-    event.preventDefault();
-    const form = event.target;
-    const submitButton = form.querySelector('button[type="submit"]');
-    const formData = new FormData(form);
-    
-    // Show loading state
-    submitButton.disabled = true;
-    submitButton.innerHTML = `
-        <svg class="animate-spin h-5 w-5 mr-3 inline" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        Processing...
-    `;
-
-    // Convert FormData to object
-    const betaApplication = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        role: formData.get('role'),
-        products: formData.getAll('products'),
-        experience: formData.get('experience'),
-        reason: formData.get('reason')
-    };
-
-    // Send beta application email
-    emailjs.send(
-        'service_xxxxxx', // Your service ID
-        'template_beta',  // Create a new template for beta applications
-        betaApplication
-    ).then(function() {
-        // Show success message
-        submitButton.innerHTML = `
-            <svg class="h-5 w-5 mr-3 inline text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            Application Submitted!
-        `;
+    // Video gallery initialization
+    if (videoGalleryItems.length > 0) {
+        videoGalleryItems[0].classList.add('active');
+        setInterval(rotateVideoGallery, 8000);
         
-        // Send confirmation email to applicant
-        return emailjs.send(
-            'service_xxxxxx',
-            'template_beta_confirm',
-            betaApplication
-        );
-    }).then(function() {
-        // Reset form after 2 seconds
-        setTimeout(() => {
-            closeModal();
-        }, 2000);
-    }).catch(function(error) {
-        console.error('Failed to submit application:', error);
-        submitButton.innerHTML = `
-            <svg class="h-5 w-5 mr-3 inline text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-            Submission Failed
-        `;
-    }).finally(function() {
-        // Re-enable button after 3 seconds
-        setTimeout(() => {
-            submitButton.disabled = false;
-            submitButton.innerHTML = 'Submit Application';
-        }, 3000);
-    });
-}
-
-// Video optimization
-document.addEventListener('DOMContentLoaded', function() {
-    const videos = document.querySelectorAll('video');
-    
-    videos.forEach(video => {
-        // Add loading class
-        video.parentElement.classList.add('video-container');
-        
-        // Handle video loaded
-        video.addEventListener('loadeddata', function() {
-            video.parentElement.classList.add('loaded');
-        });
-
-        // Handle playback issues
-        video.addEventListener('stalled', function() {
-            video.load();
-            video.play().catch(() => {
-                // Fallback handling
-                console.log('Playback failed');
-            });
-        });
-
-        // Optimize memory usage
-        video.addEventListener('pause', function() {
-            if (document.hidden) {
-                video.src = '';
+        videoGalleryItems.forEach(item => {
+            const video = item.querySelector('video');
+            if (video) {
                 video.load();
             }
         });
-    });
+    }
 
-    // Handle visibility changes
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            videos.forEach(video => {
-                video.pause();
-            });
+    // Modal initialization
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Setup Learn More links
+        document.querySelectorAll('.card-gradient').forEach((card, index) => {
+            const link = card.querySelector('a');
+            link.href = 'javascript:void(0)';
+            link.onclick = () => showModal(['narrative', 'streamy', 'medusa'][index]);
+        });
+    }
+
+    // Beta form initialization
+    const betaForm = document.getElementById('betaForm');
+    if (betaForm) {
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init(EMAILJS_CONFIG.publicKey);
+            betaForm.addEventListener('submit', handleBetaSubmit);
+            betaForm.addEventListener('input', handleFormValidation);
         } else {
-            videos.forEach(video => {
-                video.play().catch(() => {
-                    console.log('Playback failed');
-                });
-            });
+            console.error('EmailJS not loaded');
+            // Disable form submission if EmailJS isn't available
+            const submitButton = betaForm.querySelector('button[type="submit"]');
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Form temporarily unavailable';
+            }
         }
+    }
+
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenu = document.getElementById('close-menu');
+
+    function toggleMenu() {
+        mobileMenu.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
+    }
+
+    if (mobileMenuButton && mobileMenu && closeMenu) {
+        mobileMenuButton.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+    }
+
+    // Consolidated video optimization
+    document.querySelectorAll('video').forEach(video => {
+        // Initialize video
+        initializeVideo(video);
+
+        // Pause videos when not in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {});
+                } else {
+                    video.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(video);
+
+        // Handle low-power mode and background
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                video.pause();
+            } else {
+                if (video.closest('.active')) {
+                    video.play().catch(() => {});
+                }
+            }
+        });
     });
 });
+
+// Helper function for video initialization
+function initializeVideo(video) {
+    video.parentElement.classList.add('video-container');
+    
+    video.addEventListener('loadeddata', function() {
+        video.parentElement.classList.add('loaded');
+    });
+
+    video.addEventListener('stalled', function() {
+        video.load();
+        video.play().catch(() => console.log('Playback failed'));
+    });
+
+    video.addEventListener('pause', function() {
+        if (document.hidden) {
+            video.src = '';
+            video.load();
+        }
+    });
+}
+
+// EmailJS configuration
+const EMAILJS_CONFIG = {
+    publicKey: "DFHk8V0AORV0OzSYa",
+    serviceId: "service_qx53ezs",
+    betaTemplateId: "template_rbqasms"
+};
+
+// Beta form submission
+function handleBetaSubmit(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const submitButton = form.querySelector('button[type="submit"]');
+    
+    submitButton.disabled = true;
+    submitButton.innerHTML = 'Submitting...';
+
+    // Get selected products with fallback
+    const selectedProducts = Array.from(form.querySelectorAll('input[name="products"]:checked'))
+        .map(checkbox => checkbox.value)
+        .join(', ') || 'None selected';
+
+    // Match template variables exactly
+    const templateParams = {
+        to_name: 'Admin',
+        from_name: form.name.value,
+        from_email: form.email.value,
+        name: form.name.value,
+        email: form.email.value,
+        role: form.role.value,
+        products: selectedProducts,
+        experience: form.experience.value,
+        reason: form.reason.value,
+        reply_to: form.email.value
+    };
+
+    // Send email using proper parameter order
+    emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.betaTemplateId,
+        templateParams,
+        EMAILJS_CONFIG.publicKey
+    )
+    .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Application submitted successfully!');
+        form.reset();
+    })
+    .catch(function(error) {
+        console.error('FAILED...', error);
+        alert('Failed to submit application. Please try again.');
+    })
+    .finally(function() {
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Submit Application';
+    });
+}
+
+// Form validation function
+function handleFormValidation(e) {
+    const input = e.target;
+    if (input.validity.valid) {
+        input.classList.remove('border-red-500');
+        input.classList.add('border-gray-600');
+    } else {
+        input.classList.remove('border-gray-600');
+        input.classList.add('border-red-500');
+    }
+}

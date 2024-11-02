@@ -3,7 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>DeepTech AI - Pioneering AI Solutions</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="styles/styles.css" rel="stylesheet">
@@ -13,14 +16,37 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center py-4">
-                <a href="index.html" class="text-white font-bold text-xl mb-4 md:mb-0">DeepTech AI</a>
-                <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-white font-bold text-xl">DeepTech AI</a>
+                
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+
+                <!-- Desktop menu -->
+                <div class="hidden md:flex space-x-6">
                     <a href="index.html" class="text-white hover:text-gray-300 transition-colors">Home</a>
                     <a href="about.html" class="text-white hover:text-gray-300 transition-colors">About</a>
                     <a href="products.html" class="text-white hover:text-gray-300 transition-colors">Products</a>
                     <a href="beta.html" class="text-white hover:text-gray-300 transition-colors">Beta Program</a>
-                    <a href="contact.html" class="text-white hover:text-gray-300 transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile menu -->
+                <div id="mobile-menu" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50">
+                    <div class="flex flex-col items-center justify-center h-full space-y-8">
+                        <a href="index.html" class="text-white text-xl">Home</a>
+                        <a href="about.html" class="text-white text-xl">About</a>
+                        <a href="products.html" class="text-white text-xl">Products</a>
+                        <a href="beta.html" class="text-white text-xl">Beta Program</a>
+                        <button id="close-menu" class="text-white mt-8">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,8 +54,16 @@
 
     <!-- Hero Section with Video Slider -->
     <section class="min-h-screen relative overflow-hidden pt-20">
-        <div class="absolute inset-0">
-            <video autoplay muted loop class="w-full h-full object-cover">
+        <div class="absolute inset-0" style="height: 690px; width: 100%;">
+            <video 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                preload="auto"
+                class="w-full h-full object-cover"
+                style="max-height: 690px; aspect-ratio: 690/512;"
+                poster="./media/images/video-poster.jpg">
                 <source src="media/videos/zana.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -50,8 +84,8 @@
     </section>
 
     <!-- Move About Section here, right after Hero -->
-    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-transparent about-overlay">
-        <div class="max-w-6xl mx-auto">
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-transparent about-overlay" style="margin-top: -30px;">
+        <div class="max-w-6xl mx-auto relative z-10">
             <h2 class="text-4xl font-bold mb-12 gradient-text text-center">About DeepTech AI</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="space-y-6">
@@ -311,32 +345,68 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="gallery-container">
                     <div class="gallery-item">
-                        <video autoplay muted loop>
+                        <video 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            preload="metadata"
+                            class="w-full h-full object-cover">
                             <source src="media/videos/video1.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="gallery-item">
-                        <video autoplay muted loop>
+                        <video 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            preload="metadata"
+                            class="w-full h-full object-cover">
                             <source src="media/videos/video2.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="gallery-item">
-                        <video autoplay muted loop>
+                        <video 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            preload="metadata"
+                            class="w-full h-full object-cover">
                             <source src="media/videos/video3.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="gallery-item">
-                        <video autoplay muted loop>
+                        <video 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            preload="metadata"
+                            class="w-full h-full object-cover">
                             <source src="media/videos/video4.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="gallery-item">
-                        <video autoplay muted loop>
+                        <video 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            preload="metadata"
+                            class="w-full h-full object-cover">
                             <source src="media/videos/video5.mp4" type="video/mp4">
                         </video>
                     </div>
                     <div class="gallery-item">
-                        <video autoplay muted loop>
+                        <video 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            preload="metadata"
+                            class="w-full h-full object-cover">
                             <source src="media/videos/video6.mp4" type="video/mp4">
                         </video>
                     </div>
@@ -351,44 +421,6 @@
                         <li>Enhanced monetization features</li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="py-20 px-4 bg-gradient-to-b from-transparent to-gray-900">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold mb-12 gradient-text text-center">Get in Touch</h2>
-            <div class="contact-box">
-                <form id="contactForm" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block text-gray-300 mb-2">Name</label>
-                            <input type="text" id="name" name="name" class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-gray-300 mb-2">Email</label>
-                            <input type="email" id="email" name="email" class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="subject" class="block text-gray-300 mb-2">Subject</label>
-                        <select id="subject" name="subject" class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                            <option value="general">General Inquiry</option>
-                            <option value="narrative">Narrative AI</option>
-                            <option value="streamy">Streamy</option>
-                            <option value="medusa">Medusa.io</option>
-                            <option value="partnership">Partnership Opportunity</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-gray-300 mb-2">Message</label>
-                        <textarea id="message" name="message" rows="4" class="w-full bg-transparent text-white rounded-lg p-3 border border-gray-600 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
-                    </div>
-                    <button type="submit" class="w-full text-white py-3 px-6 rounded-lg transition-all">
-                        Send Message
-                    </button>
-                </form>
             </div>
         </div>
     </section>
